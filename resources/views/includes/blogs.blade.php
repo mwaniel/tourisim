@@ -1,4 +1,4 @@
-<section class="blog-section">
+ <section class="blog-section">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -30,7 +30,7 @@
                         <div class="blog-date">
                             1, 09,2020
                         </div>
-                        <a href="#"class="tag">#meru travels</a>
+                        <a href="{{route('post')}}"class="tag">#meru travels</a>
                     </div>
                     <h4><a href="#">The Meru Conservation Area is the second-largest conservation area after the Tsavo East and Tsavo West...</a></h4>
                 </div>

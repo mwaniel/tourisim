@@ -9,7 +9,7 @@
     <!--End of navbar-->
 @include('includes.blogs')
 <!---End of Blog Section-->
-@include('includes.blogs')
+
 <!---Contact Section-->
 @include('includes.contacts')
 <!---End of Contact Section-->

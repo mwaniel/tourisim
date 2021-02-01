@@ -24,6 +24,9 @@ Route::get('about', function () {
 Route::get('blog', function () {
     return view('blog');
 });
+Route::get('post', function () {
+    return view('post');
+})->name('post') ;
 Route::get('contact', function () {
     return view('contact');
 });
@@ -55,3 +58,9 @@ Route::get('greatfood', function () {
     return view('greatfood');
 });
 
+Route::get('admin/home', function () {
+    return view('admin.home');
+});
+Route::get('admin/post', function () {
+    return view('admin.post.post');
+});
