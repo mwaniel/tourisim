@@ -1,8 +1,6 @@
 @extends('admin.layouts.app')
-
-@section('main-content')
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+ <!-- Content Wrapper. Contains page content -->
+ <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -32,23 +30,19 @@
               <div class="box-body">
                   <div class="col-lg-6">
                   <div class="form-group">
-                  <label for="title">Post title</label>
+                  <label for="title">historical title</label>
                   <input type="text" class="form-control" id="title" name="title" placeholder="Enter title">
                 </div>
                 <div class="form-group">
-                  <label for="subtitle">Post sub-title</label>
+                  <label for="subtitle">historical sub-title</label>
                   <input type="text" class="form-control" id="subtitle" name="subtitle" placeholder="Enter subtitle">
-                </div>
-                <div class="form-group">
-                  <label for="slug">Post slug</label>
-                  <input type="text" class="form-control" id="slug" name="slug" placeholder="Enter slug">
                 </div>
 
                   </div>
                   <div class="col-lg-6">
                   <div class="form-group">
-                  <label for="image1">image input</label>
-                  <input type="file" name="image1" id="image1">
+                  <label for="image2">image input</label>
+                  <input type="file" name="image2" id="image2">
 
                   <p class="help-block">image here.</p>
                 </div>
@@ -107,5 +101,6 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+@section('main-content')
 
 @endsection
