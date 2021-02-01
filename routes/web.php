@@ -64,3 +64,19 @@ Route::get('admin/home', function () {
 Route::get('admin/post', function () {
     return view('admin.post.post');
 });
+
+Route::get('admin/tag', function () {
+    return view('admin.tag.tag');
+});
+Route::get('admin/categories', function () {
+    return view('admin.categories.categories');
+});
+Route::get('admin/ service', function () {
+    return view('admin.service.service');
+});
+Route::get('admin/popular', function () {
+    return view('admin.popular.popular');
+});
+Route::get('admin/historical', function () {
+    return view('admin.historical.historical');
+});
