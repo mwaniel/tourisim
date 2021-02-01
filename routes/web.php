@@ -61,22 +61,11 @@ Route::get('greatfood', function () {
 Route::get('admin/home', function () {
     return view('admin.home');
 });
-Route::get('admin/post', function () {
-    return view('admin.post.post');
-});
+Route::resource('admin/post','App\Http\Controllers\Admin\PostController');
+Route::resource('admin/tag','App\Http\Controllers\Admin\TagController');
+Route::resource('admin/categories','App\Http\Controllers\Admin\CategoriesController');
+Route::resource('admin/service','App\Http\Controllers\Admin\serviceController');
+Route::resource('admin/popular','App\Http\Controllers\Admin\PopularController');
+Route::resource('admin/historical','App\Http\Controllers\Admin\HistoricalController');
 
-Route::get('admin/tag', function () {
-    return view('admin.tag.tag');
-});
-Route::get('admin/categories', function () {
-    return view('admin.categories.categories');
-});
-Route::get('admin/ service', function () {
-    return view('admin.service.service');
-});
-Route::get('admin/popular', function () {
-    return view('admin.popular.popular');
-});
-Route::get('admin/historical', function () {
-    return view('admin.historical.historical');
-});
+
