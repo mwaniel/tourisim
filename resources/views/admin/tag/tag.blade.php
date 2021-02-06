@@ -26,6 +26,7 @@
               <h3 class="box-title">Titles</h3>
             </div>
             <!-- /.box-header -->
+           @include('includes.massage')
             <!-- form start -->
             <form role="form" action="{{ route('tag.store') }}" method="post">
             {{csrf_field()}}
