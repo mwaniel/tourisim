@@ -63,7 +63,7 @@ Route::get('admin/home', function () {
 });
 Route::resource('admin/post','App\Http\Controllers\Admin\PostController');
 Route::resource('admin/tag','App\Http\Controllers\Admin\TagController');
-Route::resource('admin/categories','App\Http\Controllers\Admin\CategoriesController');
+Route::resource('admin/category','App\Http\Controllers\Admin\CategoryController');
 Route::resource('admin/service','App\Http\Controllers\Admin\serviceController');
 Route::resource('admin/popular','App\Http\Controllers\Admin\PopularController');
 Route::resource('admin/historical','App\Http\Controllers\Admin\HistoricalController');
