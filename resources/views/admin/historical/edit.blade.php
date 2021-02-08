@@ -1,8 +1,8 @@
 @extends('admin.layouts.app')
 
 @section('main-content')
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -25,31 +25,28 @@
             <div class="box-header with-border">
               <h3 class="box-title">Titles</h3>
             </div>
-          @include('includes.massage')
             <!-- /.box-header -->
+            @include('includes.massage')
             <!-- form start -->
-            <form role="form" action="{{route('post.store')}}" method="post">
+            <form role="form" action="{{route('historical.update',$historical->id)}}" method="post">
                 {{csrf_field()}}
+                {{method_field('patch')}}
               <div class="box-body">
                   <div class="col-lg-6">
                   <div class="form-group">
-                  <label for="title">Post title</label>
-                  <input type="text" class="form-control" id="title" name="title" placeholder="Enter title">
+                  <label for="title">historical title</label>
+                  <input type="text" class="form-control" id="title" name="title" placeholder="Enter title"value="{{$historical->title}}">
                 </div>
                 <div class="form-group">
-                  <label for="subtitle">Post sub-title</label>
-                  <input type="text" class="form-control" id="subtitle" name="subtitle" placeholder="Enter subtitle">
-                </div>
-                <div class="form-group">
-                  <label for="slug">Post slug</label>
-                  <input type="text" class="form-control" id="slug" name="slug" placeholder="Enter slug">
+                  <label for="price">historical price</label>
+                  <input type="text" class="form-control" id="price" name="price" placeholder="Enter price"value="{{$historical->price}}">
                 </div>
 
                   </div>
                   <div class="col-lg-6">
                   <div class="form-group">
-                  <label for="image1">image input</label>
-                  <input type="file" name="image1" id="image1">
+                  <label for="image">image input</label>
+                  <input type="file" name="image" id="image">
 
                   <p class="help-block">image here.</p>
                 </div>
@@ -57,7 +54,7 @@
 </br>
                 <div class="checkbox">
                   <label>
-                    <input type="checkbox" name="status"> publish
+                    <input type="checkbox" name="status"@if ($historical->status == 1)checked @endif> publish
                   </label>
                 </div>
               </div>
@@ -82,7 +79,7 @@
             <div class="box-body pad">
               <form>
                 <textarea class="textarea" name="body" placeholder="Place some text here"
-                          style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                          style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{$historical->body}}</textarea>
               </form>
             </div>
           </div>
@@ -90,7 +87,7 @@
 
               <div class="box-footer">
                 <button type="submit" class="btn btn-primary">Submit</button>
-                <a  href="{{ route('post.index') }}" class="btn btn-warning">Back</a>
+                <a  href="{{ route('historical.index') }}" class="btn btn-warning">Back</a>
               </div>
                   </div>
 
@@ -109,5 +106,4 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
 @endsection

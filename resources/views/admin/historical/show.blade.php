@@ -1,8 +1,11 @@
 @extends('admin.layouts.app')
+@section('head')
 
+
+@endsection
 @section('main-content')
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+ <!-- Content Wrapper. Contains page content -->
+ <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -22,8 +25,8 @@
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Categories</h3>
-            <a class='col-lg-offset-5 btn btn-success' href="{{route('category.create')}}">Add new</a>
+          <h3 class="box-title">historic places</h3>
+            <a class='col-lg-offset-5 btn btn-success' href="{{route('historical.create')}}">Add new</a>
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
                     title="Collapse">
@@ -46,33 +49,33 @@
                 <thead>
                 <tr>
                   <th>S.No</th>
-                  <th>category name</th>
-                  <th>slug</th>
-                  <th>edit</th>
+                  <th>Name</th>
+                  <th>price</th>
+                  <th>Edit</th>
                   <th>Delete</th>
                 </tr>
                 </thead>
                 <tbody>
-                    @foreach ($categories as $category)
+                    @foreach ($historical as $historicalp)
                     <tr>
                   <td>{{$loop->index + 1 }}</td>
-                  <td>{{ $category->name}}</td>
-                  <td>{{ $category->slug}}</td>
-                  <td> <a href="{{route('category.edit',$category->id)}}" ><span class="glyphicon glyphicon-edit"></span></a></td>
-                  <form id="delete-form-{{$category->id}}" method="post" action="{{route('category.destroy',$category->id)}}" style="display: none">
+                  <td>{{ $historicalp->title}}</td>
+                  <td>{{ $historicalp->price}}</td>
+                  <td><a href="{{route('historical.edit',$historicalp->id)}}" ><span class="glyphicon glyphicon-edit"></span></a></td>
+                  <form id="delete-form-{{$historicalp->id}}" method="post" action="{{route('historical.destroy',$historicalp->id)}}" style="display: none">
                 {{csrf_field()}}
                 {{method_field('DELETE')}}
                 </form>
-                  <td><a href="" onclick="if(confirm('Are you sure,You want to delete?')){ event.preventDefault();document.getElementById('delete-form-{{$category->id}}').submit();}else{event.preventDefault();}" ><span class="glyphicon glyphicon-trash"></span></a></td>
+                  <td><a href="" onclick="if(confirm('Are you sure,You want to delete?')){ event.preventDefault();document.getElementById('delete-form-{{$historicalp->id}}').submit();}else{event.preventDefault();}" ><span class="glyphicon glyphicon-trash"></span></a></td>
                 </tr>
                     @endforeach
                 </tbody>
                 <tfoot>
                 <tr>
-                <th>S.No</th>
-                  <th>category name</th>
-                  <th>slug</th>
-                  <th>edit</th>
+                  <th>S.No</th>
+                  <th>Name</th>
+                  <th>price</th>
+                  <th>Edit</th>
                   <th>Delete</th>
                 </tr>
                 </tfoot>
@@ -101,4 +104,5 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
 @endsection

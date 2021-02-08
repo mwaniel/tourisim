@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\popularp;
 class PopularController extends Controller
 {
     /**
@@ -14,7 +14,8 @@ class PopularController extends Controller
      */
     public function index()
     {
-        //
+        $popular = popularp::all();
+        return view('admin.popular.show',compact('popular'));
     }
 
     /**
@@ -35,7 +36,20 @@ class PopularController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'title'=>'required',
+            'price'=>'required',
+            'body'=>'required',
+
+        ]);
+        $historical = new popularp;
+        $historical->title = $request->title;
+        $historical->price = $request->price;
+        $historical->body = $request->body;
+        $historical->image = $request->image;
+        $historical->save();
+
+        return redirect(route('popular.index'));
     }
 
     /**
@@ -57,7 +71,8 @@ class PopularController extends Controller
      */
     public function edit($id)
     {
-        //
+        $popularp=popularp::where('id',$id)->first();
+        return view('admin.popularp.edit ',compact('popularp'));
     }
 
     /**
@@ -69,7 +84,20 @@ class PopularController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'title'=>'required',
+            'price'=>'required',
+            'body'=>'required',
+
+        ]);
+        $historical = popularp::find($id);
+        $historical->title = $request->title;
+        $historical->price = $request->price;
+        $historical->body = $request->body;
+        $historical->image = $request->image;
+        $historical->save();
+
+        return redirect(route('popular.index'));
     }
 
     /**
@@ -80,6 +108,7 @@ class PopularController extends Controller
      */
     public function destroy($id)
     {
-        //
+        popularp::where('id',$id)->delete();
+        return redirect()->back();
     }
 }

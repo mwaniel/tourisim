@@ -1,6 +1,8 @@
 @extends('admin.layouts.app')
- <!-- Content Wrapper. Contains page content -->
- <div class="content-wrapper">
+
+@section('main-content')
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -24,8 +26,9 @@
               <h3 class="box-title">Titles</h3>
             </div>
             <!-- /.box-header -->
+            @include('includes.massage')
             <!-- form start -->
-            <form role="form" action="{{route('post.store')}}" method="post">
+            <form role="form" action="{{route('historical.store')}}" method="post">
                 {{csrf_field()}}
               <div class="box-body">
                   <div class="col-lg-6">
@@ -34,15 +37,15 @@
                   <input type="text" class="form-control" id="title" name="title" placeholder="Enter title">
                 </div>
                 <div class="form-group">
-                  <label for="subtitle">historical sub-title</label>
-                  <input type="text" class="form-control" id="subtitle" name="subtitle" placeholder="Enter subtitle">
+                  <label for="price">historical price</label>
+                  <input type="text" class="form-control" id="price" name="price" placeholder="Enter price">
                 </div>
 
                   </div>
                   <div class="col-lg-6">
                   <div class="form-group">
-                  <label for="image2">image input</label>
-                  <input type="file" name="image2" id="image2">
+                  <label for="image">image input</label>
+                  <input type="file" name="image" id="image">
 
                   <p class="help-block">image here.</p>
                 </div>
@@ -83,6 +86,7 @@
 
               <div class="box-footer">
                 <button type="submit" class="btn btn-primary">Submit</button>
+                <a  href="{{ route('historical.index') }}" class="btn btn-warning">Back</a>
               </div>
                   </div>
 
@@ -101,6 +105,4 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-@section('main-content')
-
 @endsection

@@ -28,18 +28,19 @@
             <!-- /.box-header -->
        @include('includes.massage')
             <!-- form start -->
-            <form role="form" action="{{route('category.store')}}" method="post">
+            <form role="form" action="{{route('category.update',$category->id)}}" method="post">
             {{csrf_field()}}
+            {{method_field('patch')}}
             <div class="box-body">
                   <div class="col-lg-offset-3 col-lg-6">
                   <div class="form-group">
                   <label for="name">category title</label>
-                  <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
+                  <input type="text" class="form-control" id="name" name="name"value="{{$category->name}}" placeholder="Enter name">
                 </div>
 
                 <div class="form-group">
                   <label for="slug">category slug</label>
-                  <input type="text" class="form-control" id="slug" name="slug" placeholder="Enter slug">
+                  <input type="text" class="form-control" id="slug" name="slug" placeholder="Enter slug"value="{{$category->slug}}">
                 </div>
                 <div class="box">
               <div class="box-footer">

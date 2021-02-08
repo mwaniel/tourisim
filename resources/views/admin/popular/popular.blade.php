@@ -19,15 +19,16 @@
     <!-- Main content -->
     <section class="content">
       <div class="row">
-        <div class="col-md-12">
- <!-- general form elements -->
- <div class="box box-primary">
-            <div class="box-header with-border">
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                <div class="box-header with-border">
               <h3 class="box-title">Titles</h3>
-            </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-            <form role="form" action="{{route('post.store')}}" method="post">
+             </div>
+                <!-- /.box-header -->
+                @include('includes.massage')
+                <!-- form start -->
+                <form role="form" action="{{route('popular.store')}}" method="post">
                 {{csrf_field()}}
               <div class="box-body">
                   <div class="col-lg-6">
@@ -36,30 +37,32 @@
                   <input type="text" class="form-control" id="title" name="title" placeholder="Enter title">
                 </div>
                 <div class="form-group">
-                  <label for="subtitle">popular sub-title</label>
-                  <input type="text" class="form-control" id="subtitle" name="subtitle" placeholder="Enter subtitle">
+                  <label for="price">popular price</label>
+                  <input type="text" class="form-control" id="price" name="price" placeholder="Enter price">
                 </div>
 
                   </div>
                   <div class="col-lg-6">
                   <div class="form-group">
-                  <label for="image2">image input</label>
-                  <input type="file" name="image2" id="image2">
+                  <label for="image">image input</label>
+                  <input type="file" name="image" id="image">
 
                   <p class="help-block">image here.</p>
                 </div>
-</br>
-</br>
+                </br>
+                </br>
                 <div class="checkbox">
                   <label>
                     <input type="checkbox" name="status"> publish
                   </label>
                 </div>
               </div>
+              </div>
+
               <!-- /.box-body -->
               <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">write post body
+                <div class="box-header">
+              <h3 class="box-title">write  body
                 <small>Simple and fast</small>
               </h3>
               <!-- tools box -->
@@ -72,25 +75,27 @@
                   <i class="fa fa-times"></i></button>
               </div>
               <!-- /. tools -->
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body pad">
+                </div>
+             <!-- /.box-header -->
+                <div class="box-body pad">
               <form>
                 <textarea class="textarea" name="body" placeholder="Place some text here"
                           style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
               </form>
-            </div>
-          </div>
+                </div>
+                </div>
 
 
               <div class="box-footer">
                 <button type="submit" class="btn btn-primary">Submit</button>
+                <a  href="{{ route('popular.index') }}" class="btn btn-warning">Back</a>
               </div>
                   </div>
 
 
-            </form>
-          </div>
+                </form>
+                </div>
+
           <!-- /.box -->
           <!-- /.box -->
 

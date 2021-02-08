@@ -1,8 +1,8 @@
 @extends('admin.layouts.app')
 
 @section('main-content')
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+ <!-- Content Wrapper. Contains page content -->
+ <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -19,52 +19,51 @@
     <!-- Main content -->
     <section class="content">
       <div class="row">
-        <div class="col-md-12">
- <!-- general form elements -->
- <div class="box box-primary">
-            <div class="box-header with-border">
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                <div class="box-header with-border">
               <h3 class="box-title">Titles</h3>
-            </div>
-          @include('includes.massage')
-            <!-- /.box-header -->
-            <!-- form start -->
-            <form role="form" action="{{route('post.store')}}" method="post">
+             </div>
+                <!-- /.box-header -->
+                @include('includes.massage')
+                <!-- form start -->
+                <form role="form" action="{{route('popular.update',$popular->id)}}" method="post">
                 {{csrf_field()}}
+                {{method_field('patch')}}
               <div class="box-body">
                   <div class="col-lg-6">
                   <div class="form-group">
-                  <label for="title">Post title</label>
-                  <input type="text" class="form-control" id="title" name="title" placeholder="Enter title">
+                  <label for="title">popular title</label>
+                  <input type="text" class="form-control" id="title" name="title"value="{{$popular->title}}" placeholder="Enter title">
                 </div>
                 <div class="form-group">
-                  <label for="subtitle">Post sub-title</label>
-                  <input type="text" class="form-control" id="subtitle" name="subtitle" placeholder="Enter subtitle">
-                </div>
-                <div class="form-group">
-                  <label for="slug">Post slug</label>
-                  <input type="text" class="form-control" id="slug" name="slug" placeholder="Enter slug">
+                  <label for="price">popular price</label>
+                  <input type="text" class="form-control" id="price" name="price"value="{{$popular->price}}" placeholder="Enter price">
                 </div>
 
                   </div>
                   <div class="col-lg-6">
                   <div class="form-group">
-                  <label for="image1">image input</label>
-                  <input type="file" name="image1" id="image1">
+                  <label for="image">image input</label>
+                  <input type="file" name="image" id="image">
 
                   <p class="help-block">image here.</p>
                 </div>
-</br>
-</br>
+                </br>
+                </br>
                 <div class="checkbox">
                   <label>
-                    <input type="checkbox" name="status"> publish
+                    <input type="checkbox" name="status"@if ($popular->status == 1)checked @endif> publish
                   </label>
                 </div>
               </div>
+              </div>
+
               <!-- /.box-body -->
               <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">write post body
+                <div class="box-header">
+              <h3 class="box-title">write  body
                 <small>Simple and fast</small>
               </h3>
               <!-- tools box -->
@@ -77,26 +76,27 @@
                   <i class="fa fa-times"></i></button>
               </div>
               <!-- /. tools -->
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body pad">
+                </div>
+             <!-- /.box-header -->
+                <div class="box-body pad">
               <form>
                 <textarea class="textarea" name="body" placeholder="Place some text here"
-                          style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                          style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{$popular->body}}</textarea>
               </form>
-            </div>
-          </div>
+                </div>
+                </div>
 
 
               <div class="box-footer">
                 <button type="submit" class="btn btn-primary">Submit</button>
-                <a  href="{{ route('post.index') }}" class="btn btn-warning">Back</a>
+                <a  href="{{ route('popular.index') }}" class="btn btn-warning">Back</a>
               </div>
                   </div>
 
 
-            </form>
-          </div>
+                </form>
+                </div>
+
           <!-- /.box -->
           <!-- /.box -->
 
@@ -109,5 +109,4 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
 @endsection

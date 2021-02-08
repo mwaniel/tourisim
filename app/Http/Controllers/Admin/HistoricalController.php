@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\historicalp;
 
 class HistoricalController extends Controller
 {
@@ -14,7 +15,8 @@ class HistoricalController extends Controller
      */
     public function index()
     {
-        //
+        $historical = historicalp::all();
+        return view('admin.historical.show',compact('historical'));
     }
 
     /**
@@ -35,7 +37,20 @@ class HistoricalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'title'=>'required',
+            'price'=>'required',
+            'body'=>'required',
+
+        ]);
+        $historical = new historicalp;
+        $historical->title = $request->title;
+        $historical->price = $request->price;
+        $historical->body = $request->body;
+        $historical->image = $request->image;
+        $historical->save();
+
+        return redirect(route('historical.index'));
     }
 
     /**
@@ -57,7 +72,8 @@ class HistoricalController extends Controller
      */
     public function edit($id)
     {
-        //
+        $historical=historicalp::where('id',$id)->first();
+        return view('admin.historical.edit ',compact('historical'));
     }
 
     /**
@@ -69,7 +85,20 @@ class HistoricalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'title'=>'required',
+            'price'=>'required',
+            'body'=>'required',
+
+        ]);
+        $historical = historicalp::find($id);
+        $historical->title = $request->title;
+        $historical->price = $request->price;
+        $historical->body = $request->body;
+        $historical->image = $request->image;
+        $historical->save();
+
+        return redirect(route('historical.index'));
     }
 
     /**
@@ -80,6 +109,7 @@ class HistoricalController extends Controller
      */
     public function destroy($id)
     {
-        //
+        historicalp::where('id',$id)->delete();
+        return redirect()->back();
     }
 }
