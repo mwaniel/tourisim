@@ -3,25 +3,25 @@
 @section('main-content')
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Text Editors
-        <small>Advanced form element</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Forms</a></li>
-        <li class="active">Editors</li>
-      </ol>
-    </section>
+      <!-- Content Header (Page header) -->
+        <section class="content-header">
+         <h1>
+             Text Editors
+           <small>Advanced form element</small>
+         </h1>
+          <ol class="breadcrumb">
+         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+         <li><a href="#">Forms</a></li>
+         <li class="active">Editors</li>
+         </ol>
+        </section>
 
     <!-- Main content -->
     <section class="content">
       <div class="row">
         <div class="col-md-12">
  <!-- general form elements -->
- <div class="box box-primary">
+            <div class="box box-primary">
             <div class="box-header with-border">
               <h3 class="box-title">Titles</h3>
             </div>
@@ -53,17 +53,35 @@
 
                   <p class="help-block">image here.</p>
                 </div>
-</br>
-</br>
                 <div class="checkbox">
                   <label>
                     <input type="checkbox" name="status"> publish
                   </label>
                 </div>
+                <div class="form-group">
+                <label>select tag</label>
+                <select class="form-control select2" multiple="multiple" data-placeholder="Select a tag"
+                        style="width: 100%;"name="tags[]">
+                  @foreach ($tags as $tag)
+                  <option value="{{$tag->id}}">{{$tag->name}}</option>
+                  @endforeach
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>select category</label>
+                <select name="category[]"class="form-control select2" multiple="multiple" data-placeholder="Select a category"
+                        style="width: 100%;">
+                  @foreach ($category as $category)
+                  <option value="{{$category->id}}">{{$category->name}}</option>
+                  @endforeach
+                </select>
+              </div>
+                  </div>
               </div>
               <!-- /.box-body -->
               <div class="box">
-            <div class="box-header">
+             <div class="box-header">
               <h3 class="box-title">write post body
                 <small>Simple and fast</small>
               </h3>
@@ -82,7 +100,7 @@
             <div class="box-body pad">
               <form>
                 <textarea class="textarea" name="body" placeholder="Place some text here"
-                          style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                          style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" id="editor1"></textarea>
               </form>
             </div>
           </div>
@@ -96,6 +114,7 @@
 
 
             </form>
+           </div>
           </div>
           <!-- /.box -->
           <!-- /.box -->
@@ -103,7 +122,7 @@
 
         </div>
         <!-- /.col-->
-      </div>
+
       <!-- ./row -->
     </section>
     <!-- /.content -->

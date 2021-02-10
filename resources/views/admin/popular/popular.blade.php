@@ -79,7 +79,7 @@
              <!-- /.box-header -->
                 <div class="box-body pad">
               <form>
-                <textarea class="textarea" name="body" placeholder="Place some text here"
+                <textarea id="editor1"class="textarea" name="body" placeholder="Place some text here"
                           style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
               </form>
                 </div>

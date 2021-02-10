@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\post;
+use App\Models\tag;
+use App\Models\category;
 
 class PostController extends Controller
 {
@@ -26,7 +28,10 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.post.post');
+        $tags=tag::all();
+        $category=category::all();
+
+        return view('admin.post.post',compact('tags','category'));
     }
 
     /**
@@ -37,11 +42,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+
        $this->validate($request,[
            'title'=>'required',
            'subtitle'=>'required',
            'slug'=>'required',
-           'body'=>'required',
+           'body'=>'required'
 
        ]);
        $post = new post;
@@ -50,6 +56,8 @@ class PostController extends Controller
        $post->slug = $request->slug;
        $post->body = $request->body;
        $post->image1 = $request->image1;
+       $post->tags()->sync($request->tags);
+        $post->category()->sync($request->category);
        $post->save();
 
        return redirect(route('post.index'));
@@ -74,8 +82,12 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $post=post::where('id',$id)->first();
-        return view('admin.post.edit ',compact('post'));
+        $post=post::with('tags','category')->where('id',$id)->first();
+        $tags=tag::all();
+        $category=category::all();
+
+        return view('admin.post.edit',compact('tags','category','post'));
+
     }
 
     /**
@@ -87,6 +99,7 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $this->validate($request,[
             'title'=>'required',
             'subtitle'=>'required',
@@ -100,6 +113,7 @@ class PostController extends Controller
         $post->slug = $request->slug;
         $post->body = $request->body;
         $post->image1 = $request->image1;
+
         $post->save();
 
         return redirect(route('post.index'));
