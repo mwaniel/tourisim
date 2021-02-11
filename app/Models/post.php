@@ -10,14 +10,14 @@ class post extends Model
     use HasFactory;
     public function tags()
     {
-        return $this->belongsToMany(tag::class);
+        return $this->belongsToMany('App\Models\tag','post_tag')->withTimestamps();
     }
-    public function category(){
-        return $this->belongsToMany(category::class);
+    public function category()
+    {
+        return $this->belongsToMany('App\Models\category','category_post')->withTimestamps();
     }
     public function getRouteKeyName()
     {
-        return'slug';
+       return 'slug'; 
     }
 }
-

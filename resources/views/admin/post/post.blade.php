@@ -98,10 +98,10 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body pad">
-              <form>
+
                 <textarea class="textarea" name="body" placeholder="Place some text here"
                           style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" id="editor1"></textarea>
-              </form>
+
             </div>
           </div>
 
@@ -110,7 +110,7 @@
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <a  href="{{ route('post.index') }}" class="btn btn-warning">Back</a>
               </div>
-                  </div>
+
 
 
             </form>

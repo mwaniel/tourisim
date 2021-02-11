@@ -24,7 +24,7 @@ Route::get('about', function () {
 Route::get('blog', function () {
     return view('user.blog');
 });
-Route::get('post/{post}', 'App\Http\Controllers\User\PostController@index')->name('post') ;
+Route::get('post/{post?}', 'App\Http\Controllers\User\PostController@post')->name('post') ;
 Route::get('contact', function () {
     return view('contact');
 });

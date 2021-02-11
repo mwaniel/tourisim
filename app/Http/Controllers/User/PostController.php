@@ -10,6 +10,7 @@ class PostController extends Controller
 {
     public function post(post $post)
     {
+        
         return view('user.post',compact('post'));
     }
 }

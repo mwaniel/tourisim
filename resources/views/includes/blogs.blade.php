@@ -10,12 +10,14 @@
             </div>
         </div>
         <div class="row">
+
+        @foreach($posts as $post)
             <div class="col-lg-4 col-md-6">
                 <div class="single-blog">
                     <img src="images/img-1.jpg" class="img-fluid" alt="">
                     <div class="blog-detail">
                         <div class="blog-date">
-                            August 09,2020
+                        {{$post->created_at->diffForHumans()}}
                         </div>
                         <a href="#"class="tag">#travel</a>
                     </div>
@@ -23,31 +25,7 @@
                 </div>
             </div>
             <!----->
-            <div class="col-lg-4 col-md-6">
-                <div class="single-blog">
-                    <img src="images/img-3.jpg" class="img-fluid" alt="">
-                    <div class="blog-detail">
-                        <div class="blog-date">
-                            1, 09,2020
-                        </div>
-                        <a href="{{route('post')}}"class="tag">#meru travels</a>
-                    </div>
-                    <h4><a href="#">The Meru Conservation Area is the second-largest conservation area after the Tsavo East and Tsavo West...</a></h4>
-                </div>
-            </div>
-            <!----->
-            <div class="col-lg-4 col-md-6">
-                <div class="single-blog">
-                    <img src="images/img-3.jpg" class="img-fluid" alt="">
-                    <div class="blog-detail">
-                        <div class="blog-date">
-                            August 09,2020
-                        </div>
-                        <a href="#"class="tag">Preparing to travel</a>
-                    </div>
-                    <h4><a href="#"> You might be a first time traveler, a once in a while traveler or a frequent traveler traveling anywhere across the world for...</a></h4>
-                </div>
-            </div>
+          @endforeach
             <!----->
         </div>
     </div>

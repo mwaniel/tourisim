@@ -56,10 +56,10 @@ class PostController extends Controller
        $post->slug = $request->slug;
        $post->body = $request->body;
        $post->image1 = $request->image1;
-       $post->tags()->sync($request->tags);
-        $post->category()->sync($request->category);
+       $post->status= $request->status;
        $post->save();
-
+$post->tags()->sync($request->tags);
+       $post->category()->sync($request->category);
        return redirect(route('post.index'));
     }
 
@@ -113,7 +113,9 @@ class PostController extends Controller
         $post->slug = $request->slug;
         $post->body = $request->body;
         $post->image1 = $request->image1;
-
+        $post->status= $request->status;
+        $post->tags()->sync($request->tags);
+        $post->category()->sync($request->category);
         $post->save();
 
         return redirect(route('post.index'));
