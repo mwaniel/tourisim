@@ -28,7 +28,7 @@
                 <!-- /.box-header -->
                 @include('includes.massage')
                 <!-- form start -->
-                <form role="form" action="{{route('popular.update',$popular->id)}}" method="post">
+                <form role="form" action="{{route('popular.update',$popular->id)}}" method="post"enctype="multipart/form-data">
                 {{csrf_field()}}
                 {{method_field('patch')}}
               <div class="box-body">

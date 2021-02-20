@@ -15,6 +15,9 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function _construct(){
+        $this->middleware('auth:admin');
+    }
     public function index()
     {
         $posts = post::all();
@@ -47,12 +50,18 @@ class PostController extends Controller
            'title'=>'required',
            'subtitle'=>'required',
            'slug'=>'required',
-           'body'=>'required'
+           'body'=>'required',
+           'image1'=>'required'
 
        ]);
+       if ($request->hasFile('image1')){
+
+        $imageName =$request->image1->store('public');
+    }
        $post = new post;
        $post->title = $request->title;
        $post->subtitle = $request->subtitle;
+       $post->image1=$imageName;
        $post->slug = $request->slug;
        $post->body = $request->body;
        $post->image1 = $request->image1;
@@ -105,14 +114,19 @@ $post->tags()->sync($request->tags);
             'subtitle'=>'required',
             'slug'=>'required',
             'body'=>'required',
+            'image1'=>'required',
 
         ]);
+        if ($request->hasFile('image1')){
+
+            $imageName =$request->image1->store('public');
+        }
         $post = post::find($id);
+        $post->image1=$imageName;
         $post->title = $request->title;
         $post->subtitle = $request->subtitle;
         $post->slug = $request->slug;
         $post->body = $request->body;
-        $post->image1 = $request->image1;
         $post->status= $request->status;
         $post->tags()->sync($request->tags);
         $post->category()->sync($request->category);

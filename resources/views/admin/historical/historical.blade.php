@@ -28,7 +28,7 @@
             <!-- /.box-header -->
             @include('includes.massage')
             <!-- form start -->
-            <form role="form" action="{{route('historical.store')}}" method="post">
+            <form role="form" action="{{route('historical.store')}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
               <div class="box-body">
                   <div class="col-lg-6">

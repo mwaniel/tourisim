@@ -13,6 +13,9 @@ class TagController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function _construct(){
+        $this->middleware('auth:admin');
+    }
     public function index()
     {
         $tags = tag::all();

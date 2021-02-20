@@ -30,8 +30,9 @@
             <li class=""><a href="{{ route('post.index') }}"><i class="fa fa-circle-o"></i> Posts</a></li>
             <li class=""><a href="{{ route('category.index') }}"><i class="fa fa-circle-o"></i> Categorys</a></li>
             <li class=""><a href="{{ route('tag.index') }}"><i class="fa fa-circle-o"></i> Tags</a></li>
-            <li class=""><a href="index2.html"><i class="fa fa-circle-o"></i> users</a></li>
-            <li class=""><a href="index2.html"><i class="fa fa-circle-o"></i> services</a></li>
+            <li class=""><a href="{{ route('user.index') }}"><i class="fa fa-circle-o"></i> users</a></li>
+            <li class=""><a href="{{ route('role.index') }}"><i class="fa fa-circle-o"></i> Roles</a></li>
+            <li class=""><a href="{{ route('permission.index') }}"><i class="fa fa-circle-o"></i> Permissions</a></li>
             <li class=""><a href="{{ route('popular.index') }}"><i class="fa fa-circle-o"></i> popularplaces</a></li>
             <li class=""><a href="{{ route('historical.index') }}"><i class="fa fa-circle-o"></i> historicalplaces</a></li>
 

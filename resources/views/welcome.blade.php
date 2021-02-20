@@ -170,9 +170,6 @@
 <!---Customers Section-->
 @include('includes.customer')
 <!---End of Customers Section-->
-<!--- Blog Section-->
-@include('includes.blogs')
-<!---End of Blog Section-->
 <!---Contact Section-->
 @include('includes.contacts')
 <!---End of Contact Section-->
