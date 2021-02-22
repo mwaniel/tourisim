@@ -36,6 +36,47 @@
                   <label for="name">Roles</label>
                   <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
                 </div>
+                <div class="row">
+<div class="col-lg-4">
+<label for="name">post permissions</label>
+@foreach($permissions as $permission)
+    @if($permission->for == 'post')
+<div class="checkbox">
+<label><input type="checkbox" name="permission[]" value="{{$permission->id}}">{{$permission->name}}</label>
+</div>
+    @endif
+
+@endforeach
+
+
+</div>
+
+<div class="col-lg-4">
+<label for="name">User permissions</label>
+@foreach($permissions as $permission)
+    @if($permission->for == 'user')
+<div class="checkbox">
+<label><input type="checkbox" name="permission[]" value="{{$permission->id}}">{{$permission->name}}</label>
+</div>
+    @endif
+
+@endforeach
+</div>
+<div class="col-lg-4">
+<label for="name">other permissions</label>
+@foreach($permissions as $permission)
+    @if($permission->for == 'other')
+<div class="checkbox">
+<label><input type="checkbox" name="permission[]" value="{{$permission->id}}">{{$permission->name}}</label>
+</div>
+    @endif
+
+@endforeach
+
+
+</div>
+                  </div>
+
                 <div class="box">
               <div class="box-footer">
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -49,6 +90,7 @@
             </form>
           </div>
           <!-- /.box -->
+        </div>
           <!-- /.box -->
 
 

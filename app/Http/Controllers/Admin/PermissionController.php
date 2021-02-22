@@ -39,10 +39,11 @@ class PermissionController extends Controller
     {
         $this->validate($request,[
             'name' =>'required|max:50|unique:permissions',
-
+             'for' =>'required'
            ]);
            $permission = new permission;
            $permission->name = $request->name;
+           $permission->for = $request->for;
 
            $permission->save();
 
@@ -83,10 +84,12 @@ class PermissionController extends Controller
     {
         $this->validate($request,[
             'name' =>'required',
+            'for' =>'required'
 
            ]);
            $permission = permission::find($permission->id);;
            $permission->name = $request->name;
+           $permission->for = $request->for;
 
            $permission->save();
 

@@ -23,39 +23,37 @@
  <!-- general form elements -->
  <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Add admin</h3>
+              <h3 class="box-title">Update Admin</h3>
             </div>
             <!-- /.box-header -->
            @include('includes.massage')
             <!-- form start -->
-            <form role="form" action="{{ route('user.store') }}" method="post">
+            <form role="form" action="{{ route('user.update',$user->id) }}" method="post">
             {{csrf_field()}}
+            {{method_field('patch')}}
             <div class="box-body">
                   <div class="col-lg-offset-3 col-lg-6">
                   <div class="form-group">
                   <label for="name">user name</label>
-                  <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
+                  <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" value="{{$user->name}}">
                 </div>
                 <div class="form-group">
                   <label for="email">email</label>
-                  <input type="text" class="form-control" id="email" name="email" placeholder="Enter email">
+                  <input type="text" class="form-control" id="email" name="email" placeholder="Enter email"value="{{$user->email}}">
                 </div>
                 <div class="form-group">
                   <label for="phone">phone</label>
-                  <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter phone">
+                  <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter phone" value="{{$user->phone}}">
                 </div>
-                <div class="form-group">
-                  <label for="password">password</label>
-                  <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
-                </div>
-                <div class="form-group">
-                  <label for="password_confirmation">Confirm password</label>
-                  <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="confirm password">
-                </div>
+
                 <div class="form-group">
                   <label >status</label>
                               <div class="checkbox">
-                 <label><input type="checkbox" name="status" value="1">status</label>
+                 <label><input type="checkbox" name="status"
+                 @if (old('status')==1 || $user->status ==1)
+                 checked
+                 @endif
+                  value="1">status</label>
                  </div>
                 </div>
 
@@ -66,7 +64,13 @@
 
                     <div class="col-lg-3">
                 <div class="checkbox">
-                 <label><input type="checkbox" name="role[]" value="{{$role->id}}">{{$role->name}}</label>
+                 <label><input type="checkbox" name="role[]" value="{{$role->id}}"
+                 @foreach ($user->roles as $user_role)
+                 @if($user_role->id == $role->id)
+                 checked
+                 @endif
+                 @endforeach
+                 >{{$role->name}}</label>
                  </div>
                  </div>
                     @endforeach

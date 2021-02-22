@@ -38,6 +38,11 @@ class LoginController extends Controller
     public function showLoginForm(){
         return view ('admin.login');
     }
+    protected function credentials(Request $request)
+    {
+        return['email'=>$request->email,'password'=>$request->password,'status'=>1];
+       // return $request->only($this->username(),'password');
+    }
 
     public function __construct()
     {

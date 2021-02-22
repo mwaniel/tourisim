@@ -36,6 +36,16 @@
                   <label for="name">Permissions</label>
                   <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
                 </div>
+                <div class="form-group">
+                <label for="for">permission for</label>
+                <select name="for" id="for"class="form-control">
+                <option selected disabled value="">select permision for</option>
+                <option value="user">User</option>
+                <option value="post">Post</option>
+                <option value="other">others</option>
+                </select>
+                </div>
+
                 <div class="box">
               <div class="box-footer">
                 <button type="submit" class="btn btn-primary">Submit</button>

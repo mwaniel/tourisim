@@ -9,7 +9,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Blank page
+        page
         <small>it all starts here</small>
       </h1>
       <ol class="breadcrumb">
@@ -26,6 +26,7 @@
       <div class="box">
         <div class="box-header with-border">
           <h3 class="box-title">Users</h3>
+          @include('includes.massage')
             <a class='col-lg-offset-5 btn btn-success' href="{{route('user.create')}}">Add new</a>
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
@@ -50,7 +51,8 @@
                 <tr>
                   <th>S.No</th>
                   <th>user Name</th>
-
+                  <th>Assigned Role</th>
+                  <th>status</th>
                   <th>Edit</th>
                   <th>Delete</th>
                 </tr>
@@ -60,9 +62,13 @@
                     <tr>
                   <td>{{$loop->index + 1 }}</td>
                   <td>{{ $user->name}}</td>
-
-                  <td><a href="{{route('tag.edit',$user->id)}}" ><span class="glyphicon glyphicon-edit"></span></a></td>
-                  <form id="delete-form-{{$user->id}}" method="post" action="{{route('tag.destroy',$user->id)}}" style="display: none">
+                  <td>@foreach ($user->roles as $role)
+{{$role->name}},
+                  @endforeach
+                  </td>
+                  <td>{{ $user->status? 'active' : 'inactive'}}</td>
+                  <td><a href="{{route('user.edit',$user->id)}}" ><span class="glyphicon glyphicon-edit"></span></a></td>
+                  <form id="delete-form-{{$user->id}}" method="post" action="{{route('user.destroy',$user->id)}}" style="display: none">
                 {{csrf_field()}}
                 {{method_field('DELETE')}}
                 </form>
@@ -74,7 +80,8 @@
                 <tr>
                   <th>S.No</th>
                   <th>user Name</th>
-
+                  <th>Assigned Role</th>
+                  <th>Status</th>
                   <th>Edit</th>
                   <th>Delete</th>
                 </tr>
